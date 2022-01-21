@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
-   private void Start()
-   {
-      RandomizePosition();
-   }
-
    private void OnTriggerEnter2D(Collider2D other)
    {
       if(other.tag == "Player") RandomizePosition();
