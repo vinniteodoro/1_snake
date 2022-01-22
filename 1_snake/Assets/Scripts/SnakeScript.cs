@@ -47,7 +47,10 @@ public class SnakeScript : MonoBehaviour
 
    private void MoveBodies()
    {
-
+      for (int i = snakeObjectsList.Count - 1; i > 0; i--)
+      {
+         snakeObjectsList[i].transform.position = snakePositionsList[i - 1][snakePositionsList[i - 1].Count - 5];
+      }
    }
 
    private void VerifyBoundaries()
