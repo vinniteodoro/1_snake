@@ -47,4 +47,3 @@ MonoBehaviour:
   gameOver: {fileID: 0}
   apple: {fileID: 0}
   snake: {fileID: 0}
-  appleScript: {fileID: 4791450771201662378, guid: cc8683fc049521b408f42b9159183bc1, type: 3}

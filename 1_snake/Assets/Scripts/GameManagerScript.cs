@@ -7,7 +7,6 @@ public class GameManagerScript : MonoBehaviour
    public static float cameraHeight = 5.1f;
    public static bool withWalls;
    [SerializeField] GameObject mainMenu, gameOver, apple, snake;
-   [SerializeField] AppleScript appleScript;
 
    public void GameOver()
    {
@@ -45,7 +44,10 @@ public class GameManagerScript : MonoBehaviour
    {
       snake.SetActive(true);
       apple.SetActive(true);
+      
+      var appleScript = apple.GetComponent<AppleScript>();
       appleScript.RandomizePosition();
+
       mainMenu.SetActive(false);
    }
 }

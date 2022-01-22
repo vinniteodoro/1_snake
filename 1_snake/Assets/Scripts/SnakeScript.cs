@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class SnakeScript : MonoBehaviour
 {
+   private List<GameObject> snakeObjectsList = new List<GameObject>();
+   private List<List<Vector3>> snakePositionsList = new List<List<Vector3>>();
    private float speed = 5f;
    private Rigidbody2D headRB;
    private float x, y;
@@ -11,19 +13,41 @@ public class SnakeScript : MonoBehaviour
 
    private void Start()
    {
-      headRB = GetComponent<Rigidbody2D>();
+      headRB = GetComponent<Rigidbody2D>(); 
+      snakeObjectsList.Add(this.gameObject);
+      snakePositionsList.Add(new List<Vector3>());
    }
 
    private void FixedUpdate()
    {
       MoveHead();
       VerifyBoundaries();
+      TrackObjectsPosition();
+      MoveBodies();
    }
 
    private void OnTriggerEnter2D(Collider2D other)
    {
-      if(other.tag == "Apple") Instantiate(bodyPreFab, new Vector3(0, 0, 0), Quaternion.identity);
+      if(other.tag == "Apple") 
+      {
+         var insertNewBody = Instantiate(bodyPreFab, new Vector3(0, 0, 0), Quaternion.identity);
+         snakeObjectsList.Add(insertNewBody);
+         snakePositionsList.Add(new List<Vector3>());
+      }
       else if(other.tag == "Body") gMScript.GameOver();
+   }
+
+   private void TrackObjectsPosition()
+   {
+      for(int i = 0; i <= snakeObjectsList.Count - 1; i++)
+      {
+         snakePositionsList[i].Add(snakeObjectsList[i].transform.position);
+      }
+   }
+
+   private void MoveBodies()
+   {
+
    }
 
    private void VerifyBoundaries()
