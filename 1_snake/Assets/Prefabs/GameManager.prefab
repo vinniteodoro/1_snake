@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a0c6bfa16010d4ebac8719b8e90cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 7844377218127595116, guid: 71e2bc000aa328440ae8395d171b7645, type: 3}
-  snake: {fileID: 6818765275145587567, guid: e1c5c2165408b394cb9e057665334012, type: 3}
-  apple: {fileID: 823795191836130237, guid: cc8683fc049521b408f42b9159183bc1, type: 3}
+  mainMenu: {fileID: 0}
+  gameOver: {fileID: 0}
+  apple: {fileID: 0}
+  snake: {fileID: 0}
+  appleScript: {fileID: 4791450771201662378, guid: cc8683fc049521b408f42b9159183bc1, type: 3}

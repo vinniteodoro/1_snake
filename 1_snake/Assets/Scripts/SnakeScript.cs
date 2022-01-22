@@ -6,6 +6,7 @@ public class SnakeScript : MonoBehaviour
    private float speed = 5f;
    private Rigidbody2D headRB;
    private float x, y;
+   [SerializeField] GameManagerScript gMScript;
 
    private void Start()
    {
@@ -18,16 +19,11 @@ public class SnakeScript : MonoBehaviour
       VerifyBoundaries();
    }
 
-   public void GameOver()
-   {
-      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-   }
-
-   public void VerifyBoundaries()
+   private void VerifyBoundaries()
    {
       if(transform.position.x >= GameManagerScript.cameraWidth || transform.position.x <= -GameManagerScript.cameraWidth || transform.position.y >= GameManagerScript.cameraHeight || transform.position.y <= -GameManagerScript.cameraHeight)
       {
-         if(GameManagerScript.withWalls) GameOver();
+         if(GameManagerScript.withWalls) gMScript.GameOver();
          else 
          {
             if(transform.position.x >= GameManagerScript.cameraWidth) transform.position = new Vector3(-GameManagerScript.cameraWidth, transform.position.y, 0);
@@ -38,7 +34,7 @@ public class SnakeScript : MonoBehaviour
       }
    }
 
-   public void MoveHead()
+   private void MoveHead()
    {
       if(Input.GetKey(KeyCode.RightArrow))
       {
