@@ -14,6 +14,9 @@ public class GameManagerScript : MonoBehaviour
       gameOver.SetActive(true);
       snake.SetActive(false);
       apple.SetActive(false);
+      
+      GameObject[] bodies = GameObject.FindGameObjectsWithTag("Body");
+      foreach(GameObject body in bodies) GameObject.Destroy(body);
    }
 
    private void QuitGame()

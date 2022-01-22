@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MainMenu
   - Apple
+  - Body
   layers:
   - Default
   - TransparentFX

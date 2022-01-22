@@ -6,6 +6,7 @@ public class SnakeScript : MonoBehaviour
    private float speed = 5f;
    private Rigidbody2D headRB;
    private float x, y;
+   [SerializeField] GameObject bodyPreFab;
    [SerializeField] GameManagerScript gMScript;
 
    private void Start()
@@ -17,6 +18,12 @@ public class SnakeScript : MonoBehaviour
    {
       MoveHead();
       VerifyBoundaries();
+   }
+
+   private void OnTriggerEnter2D(Collider2D other)
+   {
+      if(other.tag == "Apple") Instantiate(bodyPreFab, new Vector3(0, 0, 0), Quaternion.identity);
+      else if(other.tag == "Body") gMScript.GameOver();
    }
 
    private void VerifyBoundaries()
